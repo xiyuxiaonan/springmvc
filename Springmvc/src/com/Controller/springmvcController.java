@@ -18,18 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Poj.Student;
 
-//½Ó¿Ú/Àà      ×¢½â      ÅäÖÃ
-@SessionAttributes("student") // Èç¹ûÒªÔÚrequestÖĞ´æ·Åstudent¶ÔÏó,Ôò½«¸Ã¶ÔÏóÍ¬Ê±·ÅÔÚsessionÓòÖĞÎÒÔÚ¸Ä±ä
-@Controller // ´ú±íÕâ¸öÀàÊÇÒ»¸ö¿ØÖÆÆ÷¸Ä±äÁË
+//æ¥å£/ç±»      æ³¨è§£      é…ç½®
+@SessionAttributes("student") // å¦‚æœè¦åœ¨requestä¸­å­˜æ”¾studentå¯¹è±¡,åˆ™å°†è¯¥å¯¹è±¡åŒæ—¶æ”¾åœ¨sessionåŸŸä¸­æˆ‘åœ¨æ”¹å˜ç¬¬ä¸‰æ¬¡
+@Controller // ä»£è¡¨è¿™ä¸ªç±»æ˜¯ä¸€ä¸ªæ§åˆ¶å™¨æ”¹å˜äº†
 public class springmvcController {
 	@RequestMapping("welcome")
 	public String welcome() {
-		return "success"; // ÕâÀï»áÆ´½ÓÇ°×ººÍºó×º,Ä¬ÈÏÊ¹ÓÃµÄÊÇÇëÇó×ª·¢
+		return "success"; // è¿™é‡Œä¼šæ‹¼æ¥å‰ç¼€å’Œåç¼€,é»˜è®¤ä½¿ç”¨çš„æ˜¯è¯·æ±‚è½¬å‘
 	}
 
 	@RequestMapping("testModelAndView")
-	public ModelAndView testModelAndView() { // ·µ»Ø¼ÈÓĞÊı¾İÓÖÓĞÊÓÍ¼
-		ModelAndView mv = new ModelAndView("testModelAndView");// ÈÔÈ»»á¼ÓÇ°×ººÍºó×º(V)
+	public ModelAndView testModelAndView() { // è¿”å›æ—¢æœ‰æ•°æ®åˆæœ‰è§†å›¾
+		ModelAndView mv = new ModelAndView("testModelAndView");// ä»ç„¶ä¼šåŠ å‰ç¼€å’Œåç¼€(V)
 		Student stu1 = new Student();
 		stu1.setId(1);
 		stu1.setName("zj");
@@ -45,7 +45,7 @@ public class springmvcController {
 		stu1.setName("zj");
 		stu1.setAge("22");
 		mm.put("student", stu1);
-		return "redirect:/views/success.jsp";// Ê¹ÓÃÖØ¶¨Ïò,ĞèÒªĞ´ÍêÕûµÄÇ°×ººÍºó×º
+		return "redirect:/views/success.jsp";// ä½¿ç”¨é‡å®šå‘,éœ€è¦å†™å®Œæ•´çš„å‰ç¼€å’Œåç¼€
 	}
 
 	@RequestMapping("testMap")
@@ -91,18 +91,18 @@ public class springmvcController {
 	}
 
 	@RequestMapping("testUpload")
-	public String testUpload(@RequestParam("file") MultipartFile file) throws IOException {// Ç°¶Ë´«µÄÊı¾İ×¢Èë½øÈ¥
-		InputStream input = file.getInputStream();// µÃµ½ÎÄ¼şµÄÊäÈëÁ÷
-		String filename = file.getOriginalFilename();// µÃµ½Ô­Ê¼ÎÄ¼şÃû
-		OutputStream output = new FileOutputStream("d:\\" + filename);// ½«ÎÄ¼şÉÏ´«µ½Ö¸¶¨Ä¿Â¼
+	public String testUpload(@RequestParam("file") MultipartFile file) throws IOException {// å‰ç«¯ä¼ çš„æ•°æ®æ³¨å…¥è¿›å»
+		InputStream input = file.getInputStream();// å¾—åˆ°æ–‡ä»¶çš„è¾“å…¥æµ
+		String filename = file.getOriginalFilename();// å¾—åˆ°åŸå§‹æ–‡ä»¶å
+		OutputStream output = new FileOutputStream("d:\\" + filename);// å°†æ–‡ä»¶ä¸Šä¼ åˆ°æŒ‡å®šç›®å½•
 
 		byte[] bs = new byte[1024];
 		int len = -1;
-		while ((len = input.read(bs)) != -1) {// ´ÓÊäÈëÁ÷ÀïÃæ¶ÁÈ¡1024¸ö×Ö½Úµ½»º³åÇø,len=-1±íÊ¾Ã»ÓĞ¶«Î÷¿ÉÒÔ¶ÁÈ¡
-			output.write(bs, 0, len); // ½«»º³åÇøµÄÊı¾İ²»Í£¶Áµ½Ä¿µÄµØ
+		while ((len = input.read(bs)) != -1) {// ä»è¾“å…¥æµé‡Œé¢è¯»å–1024ä¸ªå­—èŠ‚åˆ°ç¼“å†²åŒº,len=-1è¡¨ç¤ºæ²¡æœ‰ä¸œè¥¿å¯ä»¥è¯»å–
+			output.write(bs, 0, len); // å°†ç¼“å†²åŒºçš„æ•°æ®ä¸åœè¯»åˆ°ç›®çš„åœ°
 		}
 		output.close();
-		System.out.println("ÉÏ´«³É¹¦");
+		System.out.println("ä¸Šä¼ æˆåŠŸ");
 		return "success";
 	}
 
