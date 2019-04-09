@@ -18,8 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Poj.Student;
 
-@SessionAttributes("student") 
-@Controller 
+@SessionAttributes("student")
+@Controller
 public class springmvcController {
 	@RequestMapping("welcome")
 	public String welcome() {
@@ -93,7 +93,7 @@ public class springmvcController {
 	public String testUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		InputStream input = file.getInputStream();
 		String filename = file.getOriginalFilename();
-		OutputStream output = new FileOutputStream("d:\\" + filename);// 
+		OutputStream output = new FileOutputStream("d:\\" + filename);//
 
 		byte[] bs = new byte[1024];
 		int len = -1;
@@ -101,7 +101,7 @@ public class springmvcController {
 			output.write(bs, 0, len);
 		}
 		output.close();
-		System.out.println("涓婁紶鎴愬姛");
+		System.out.println("我不要");
 		return "success";
 	}
 
