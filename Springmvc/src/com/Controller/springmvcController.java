@@ -101,7 +101,11 @@ public class springmvcController {
 			output.write(bs, 0, len);
 		}
 		output.close();
+
 		System.out.println("你不要");
+
+		System.out.println("它不要");
+
 		return "success";
 	}
 
