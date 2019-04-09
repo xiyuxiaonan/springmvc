@@ -20,7 +20,7 @@ import com.Poj.Student;
 
 //接口/类      注解      配置
 @SessionAttributes("student") // 如果要在request中存放student对象,则将该对象同时放在session域中
-@Controller // 代表这个类是一个控制器
+@Controller // 代表这个类是一个控制器改变
 public class springmvcController {
 	@RequestMapping("welcome")
 	public String welcome() {
